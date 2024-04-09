@@ -9,7 +9,7 @@ export const sendVerificationEmail = async (
   email: string, 
   token: string
 ) => {
-  const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+  const confirmLink = `${domain}/auth/new-password?token=${token}`;
 
   await resend.emails.send({
     from: "verify@nikunja.online",
