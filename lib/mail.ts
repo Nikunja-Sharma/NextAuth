@@ -9,10 +9,11 @@ export const sendVerificationEmail = async (
   email: string, 
   token: string
 ) => {
-  const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+  // const confirmLink = `${domain}/auth/new-verification?token=${token}`;
+  const confirmLink = `https://google.com`;
 
   await resend.emails.send({
-    from: "verify@nikunja.online",
+    from: "Nikunja Sarma <verify@nikunja.online>",
     to: email,
     subject: "Confirm your email",
     html: `<p>Click <a href="${confirmLink}">here</a> to confirm email.</p>`

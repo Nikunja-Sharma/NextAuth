@@ -3,9 +3,9 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
-
+dkwepfpa
 export const metadata: Metadata = {
-  title: "Next Auth BY Nikunja",
+  title: "Next Auth BY Ninja",
   description: "A next level Godly Authentication",
 };
 
