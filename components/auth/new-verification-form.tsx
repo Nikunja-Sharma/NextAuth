@@ -8,8 +8,6 @@ import { CardWrapper } from "./CardWrapper";
 import { FormSuccess } from "../formsuccess";
 import { FormError } from "../formerror";
 
-
-
 export const NewVerificationForm = () => {
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
@@ -33,7 +31,7 @@ export const NewVerificationForm = () => {
       })
       .catch(() => {
         setError("Something went wrong!");
-      })
+      });
   }, [token, success, error]);
 
   useEffect(() => {
@@ -42,20 +40,15 @@ export const NewVerificationForm = () => {
 
   return (
     <CardWrapper
-     
       headLabel="Confirming your verification"
       backButtonLabel="Back to login"
       backButtonHref="/auth/login"
     >
       <div className="flex items-center w-full justify-center">
-        {!success && !error && (
-          <BeatLoader />
-        )}
+        {!success && !error && <BeatLoader />}
         <FormSuccess message={success} />
-        {!success && (
-          <FormError message={error} />
-        )}
+        {!success && <FormError message={error} />}
       </div>
     </CardWrapper>
-  )
-}
+  );
+};
