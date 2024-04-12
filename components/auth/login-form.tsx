@@ -24,16 +24,16 @@ import Link from "next/link";
 export const LoginForm = () => {
     const searchParams = useSearchParams();
     const [urlError, setUrlError] = useState<string | undefined>("");
+    const [showTwoFactor, setShowTwoFactor] = useState(false);
     useEffect(() => {
         var url = searchParams.get("error");
 
-        if (url === "OAuthAccountNotLinked") {
+        if (url === "OAuthAccountNotLinked" && !showTwoFactor) {
             setUrlError("Email already in use with different provider!");
         } else {
             setUrlError("");
         }
-    }, [searchParams, urlError]);;
-    const [showTwoFactor, setShowTwoFactor] = useState(false);
+    }, [searchParams, urlError, showTwoFactor]);
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
 
