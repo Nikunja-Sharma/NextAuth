@@ -31,10 +31,8 @@ export const LoginForm = () => {
             setUrlError("Email already in use with different provider!");
         } else {
             setUrlError("");
-            // console.log(url)
-            console.log(urlError);
         }
-    }, [useSearchParams]);
+    }, [searchParams, urlError]);;
     const [showTwoFactor, setShowTwoFactor] = useState(false);
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
