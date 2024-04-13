@@ -8,7 +8,7 @@ interface RelayCardProps {
     thresholdTo: string;
 
     isRelayon: boolean;
-    unit:string
+    unit: string;
 }
 const RelayCard = ({
     label,
@@ -16,7 +16,7 @@ const RelayCard = ({
     thresholdFrom,
     thresholdTo,
     isRelayon,
-    unit
+    unit,
 }: RelayCardProps) => {
     return (
         <div className="block w-[150rem] max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -30,19 +30,19 @@ const RelayCard = ({
                     {thresholdLabel} <span>Threshold Value</span>
                 </h6>
                 <h1 className="mb-2 flex flex-col text-3xl font-bold tracking-tight text-gray-900 dark:text-white">
-                    {thresholdFrom} {unit} <span className="text-base">TO </span>{thresholdTo} {unit}
+                    {thresholdFrom} {unit}{" "}
+                    <span className="text-base">TO </span>
+                    {thresholdTo} {unit}
                 </h1>
             </div>
             <div className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
-          <p className="text-xl  font-bold">
-            <span>{label}</span>
-          </p>
-          <Badge 
-            variant={isRelayon ? "success" : "destructive"}
-          >
-            {isRelayon ? "ON" : "OFF"}
-          </Badge>
-        </div>
+                <p className="text-xl  font-bold">
+                    <span>{label}</span>
+                </p>
+                <Badge variant={isRelayon ? "success" : "destructive"}>
+                    {isRelayon ? "ON" : "OFF"}
+                </Badge>
+            </div>
         </div>
     );
 };

@@ -6,6 +6,7 @@ const relaySchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now },
 });
 
-const RelaySchema = mongoose.models.Relay || mongoose.model('Relay', relaySchema);
+const RelaySchema =
+    mongoose.models.Relay || mongoose.model("Relay", relaySchema);
 
 export default RelaySchema;

@@ -27,8 +27,8 @@ export const sendPasswordResetEmail = async (email: string, token: string) => {
     });
 };
 
-export const sendTwoFactorTokenEmail= async (email:string,token:string)=>{
-  // const confirmtokenlink = `${domain}/auth/new-verification?token=${token}`;
+export const sendTwoFactorTokenEmail = async (email: string, token: string) => {
+    // const confirmtokenlink = `${domain}/auth/new-verification?token=${token}`;
 
     await resend.emails.send({
         from: "verifyotp@nikunja.online",
@@ -36,4 +36,4 @@ export const sendTwoFactorTokenEmail= async (email:string,token:string)=>{
         subject: "2FA CODE🔐😊",
         html: `<p>Here's your Two factor authentication code 👇</p><br><h1>${token}</h1>`,
     });
-}
+};

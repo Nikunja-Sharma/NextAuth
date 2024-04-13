@@ -1,10 +1,8 @@
-import ErrorCard from '@/components/auth/error-auth'
-import React from 'react'
+import ErrorCard from "@/components/auth/error-auth";
+import React from "react";
 
 const page = () => {
-  return (
-    <ErrorCard/>
-  )
-}
+    return <ErrorCard />;
+};
 
-export default page
+export default page;

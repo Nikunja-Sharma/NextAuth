@@ -5,12 +5,12 @@ import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ResetSchema } from "@/schemas";
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { CardWrapper } from "./CardWrapper";
@@ -20,66 +20,73 @@ import { FormSuccess } from "../formsuccess";
 import { reset } from "@/action/reset";
 
 export const ResetForm = () => {
-  const [error, setError] = useState<string | undefined>("");
-  const [success, setSuccess] = useState<string | undefined>("");
+    const [error, setError] = useState<string | undefined>("");
+    const [success, setSuccess] = useState<string | undefined>("");
 
-  const [isPending, startTransition] = useTransition();
-  const form = useForm<z.infer<typeof ResetSchema>>({
-    resolver: zodResolver(ResetSchema),
-    defaultValues: {
-      email: "",
-    },
-  });
-
-  const onSubmit = (values: z.infer<typeof ResetSchema>) => {
-    setError("");
-    setSuccess("");
-
-    // console.log(values)
-    startTransition(() => {
-      reset(values).then((data) => {
-        setError(data?.error);
-        setSuccess(data?.success);
-      });
+    const [isPending, startTransition] = useTransition();
+    const form = useForm<z.infer<typeof ResetSchema>>({
+        resolver: zodResolver(ResetSchema),
+        defaultValues: {
+            email: "",
+        },
     });
-  };
-  return (
-    <div>
-      <CardWrapper
-        headLabel="Forgot your Password?"
-        backButtonLabel="Back to Login?"
-        backButtonHref="/auth/login"
-      >
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <div>
-              <FormField
-                control={form.control}
-                name="email"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Email</FormLabel>
-                    <FormControl>
-                      <Input
-                        {...field}
-                        disabled={isPending}
-                        placeholder="john.doe@example.com"
-                        type="email"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-            </div>
-            {error && !success ? <FormError message={error} /> : ""}
-            <FormSuccess message={success} />
-            <Button type="submit" className="w-full" disabled={isPending}>
-              Send reset Email
-            </Button>
-          </form>
-        </Form>
-      </CardWrapper>
-    </div>
-  );
+
+    const onSubmit = (values: z.infer<typeof ResetSchema>) => {
+        setError("");
+        setSuccess("");
+
+        // console.log(values)
+        startTransition(() => {
+            reset(values).then((data) => {
+                setError(data?.error);
+                setSuccess(data?.success);
+            });
+        });
+    };
+    return (
+        <div>
+            <CardWrapper
+                headLabel="Forgot your Password?"
+                backButtonLabel="Back to Login?"
+                backButtonHref="/auth/login"
+            >
+                <Form {...form}>
+                    <form
+                        onSubmit={form.handleSubmit(onSubmit)}
+                        className="space-y-6"
+                    >
+                        <div>
+                            <FormField
+                                control={form.control}
+                                name="email"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>Email</FormLabel>
+                                        <FormControl>
+                                            <Input
+                                                {...field}
+                                                disabled={isPending}
+                                                placeholder="john.doe@example.com"
+                                                type="email"
+                                            />
+                                        </FormControl>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                        </div>
+                        {error && !success ? <FormError message={error} /> : ""}
+                        <FormSuccess message={success} />
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={isPending}
+                        >
+                            Send reset Email
+                        </Button>
+                    </form>
+                </Form>
+            </CardWrapper>
+        </div>
+    );
 };

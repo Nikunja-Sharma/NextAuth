@@ -11,25 +11,30 @@ export const LoginSchema = z.object({
     code: z.optional(z.string()),
 });
 
-export const SettingsSchema = z.object({
-    name: z.optional(z.string()),
-    isTwoFactorEnabled : z.optional(z.boolean()),
-    role: z.enum([UserRole.ADMIN , UserRole.USER]),
-    email:z.optional(z.string().email()),
-    password:z.optional(z.string().min(6)),
-    newpassword:z.optional(z.string().min(6))
-}).refine((data)=>{
-    if (data.password && !data.newpassword) {
-        return false
-    }
-    if (!data.newpassword && data.password) {
-        return false
-    }
-    return true
-},{
-    message:"Both Password and new Password are required!",
-    path:["password", "newpassword"]
-})
+export const SettingsSchema = z
+    .object({
+        name: z.optional(z.string()),
+        isTwoFactorEnabled: z.optional(z.boolean()),
+        role: z.enum([UserRole.ADMIN, UserRole.USER]),
+        email: z.optional(z.string().email()),
+        password: z.optional(z.string().min(6)),
+        newpassword: z.optional(z.string().min(6)),
+    })
+    .refine(
+        (data) => {
+            if (data.password && !data.newpassword) {
+                return false;
+            }
+            if (!data.newpassword && data.password) {
+                return false;
+            }
+            return true;
+        },
+        {
+            message: "Both Password and new Password are required!",
+            path: ["password", "newpassword"],
+        }
+    );
 
 export const ResetSchema = z.object({
     email: z.string().email({

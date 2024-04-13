@@ -9,31 +9,29 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import React from "react";
 import { toast } from "sonner";
 
-const page =   () => {
+const page = () => {
     // const role = useCurrentRole()
     // const role = await currentRole()
 
-    const onAPIRouteClick = ()=>{
-      fetch("/api/admin").then((Response)=>{
-        if(Response.ok){
-          toast.success("Allowed API Routes(CLIENT)")
-        }else{
-          toast.error("API Forbidden Routes(CLIENT)")
-        }
-      })
-    }
-    const serverActionClick =  ()=>{
-       admin().then((data)=>{
-        if(data.error){
-          toast.error(data.error)
-
-        }
-        if(data.success){
-          toast.success(data.success)
-
-        }
-      })
-    }
+    const onAPIRouteClick = () => {
+        fetch("/api/admin").then((Response) => {
+            if (Response.ok) {
+                toast.success("Allowed API Routes(CLIENT)");
+            } else {
+                toast.error("API Forbidden Routes(CLIENT)");
+            }
+        });
+    };
+    const serverActionClick = () => {
+        admin().then((data) => {
+            if (data.error) {
+                toast.error(data.error);
+            }
+            if (data.success) {
+                toast.success(data.success);
+            }
+        });
+    };
     return (
         <Card className="bg-secondary flex flex-col justify-between items-center p-4 rounded-xl w-[98vw] mx-4  md:w-[70vw]  shadow-sm">
             <CardHeader>

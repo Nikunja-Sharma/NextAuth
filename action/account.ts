@@ -1,2 +1,2 @@
-import { getAccountDetailsByUser } from "@/data/account";
+// import { getAccountDetailsByUser } from "@/data/account";
 

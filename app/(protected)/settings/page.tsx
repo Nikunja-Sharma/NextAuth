@@ -73,13 +73,13 @@ const SettingsPage = () => {
     };
 
     return (
-        <Card className="w-[600px]">
+        <Card className="bg-secondary flex justify-between flex-col items-center p-4 rounded-xl w-[98vw] mx-4  md:w-[70vw]  shadow-sm">
             <CardHeader>
-                <p className="text-2xl font-semibold text-center">
+                <p className="text-3xl font-semibold text-center">
                     ⚙️ Settings
                 </p>
             </CardHeader>
-            <CardContent>
+            <CardContent className="w-[100%]">
                 <Form {...form}>
                     <form
                         className="space-y-6"
@@ -91,7 +91,9 @@ const SettingsPage = () => {
                                 name="name"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Name</FormLabel>
+                                        <FormLabel className="text-lg">
+                                            Name
+                                        </FormLabel>
                                         <FormControl>
                                             <Input
                                                 {...field}
@@ -110,7 +112,9 @@ const SettingsPage = () => {
                                         name="email"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Email</FormLabel>
+                                                <FormLabel className="text-lg">
+                                                    Email
+                                                </FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         {...field}
@@ -128,7 +132,9 @@ const SettingsPage = () => {
                                         name="password"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>Password</FormLabel>
+                                                <FormLabel className="text-lg">
+                                                    Password
+                                                </FormLabel>
                                                 <FormControl>
                                                     <Input
                                                         {...field}
@@ -146,11 +152,12 @@ const SettingsPage = () => {
                                         name="newpassword"
                                         render={({ field }) => (
                                             <FormItem>
-                                                <FormLabel>
+                                                <FormLabel className="text-lg">
                                                     New Password
                                                 </FormLabel>
-                                                <FormControl>
+                                                <FormControl className="">
                                                     <Input
+                                                        className="text-lg"
                                                         {...field}
                                                         placeholder="******"
                                                         type="password"
@@ -168,7 +175,9 @@ const SettingsPage = () => {
                                 name="role"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Role</FormLabel>
+                                        <FormLabel className="text-lg">
+                                            Role
+                                        </FormLabel>
                                         <Select
                                             disabled={isPending}
                                             onValueChange={field.onChange}
@@ -203,10 +212,10 @@ const SettingsPage = () => {
                                     render={({ field }) => (
                                         <FormItem className="flex flex-row items-center justify-between rounded-lg border p-3 shadow-sm">
                                             <div className="space-y-0.5">
-                                                <FormLabel>
+                                                <FormLabel className="text-lg">
                                                     Two Factor Authentication
                                                 </FormLabel>
-                                                <FormDescription>
+                                                <FormDescription className="text-sm">
                                                     Enable two factor
                                                     authentication for your
                                                     account
