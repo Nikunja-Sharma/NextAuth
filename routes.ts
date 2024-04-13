@@ -1,22 +1,22 @@
-export const publicRoutes=[
+export const publicRoutes = [
     "/",
-    "/auth/new-verification"
-    // "/auth/login",
+    "/auth/new-verification",
+    // "/api/name",
     // "/auth/register",
     // "/auth/error",
     // "/auth/reset",
     // "/auth/new-password",
     // "/settings"
-]
+];
 
-export const authRoutes=[
+export const authRoutes = [
     "/auth/login",
     "/auth/register",
     "/auth/error",
     "/auth/reset",
-    "/auth/new-password"
-]
+    "/auth/new-password",
+];
 
-export const apiAuthPrefix= "/api/auth"
+export const apiAuthPrefix = "/api/auth";
 
-export const DEFAULT_LOGIN_REDIRECT= "/settings"
+export const DEFAULT_LOGIN_REDIRECT = "/dashboard";

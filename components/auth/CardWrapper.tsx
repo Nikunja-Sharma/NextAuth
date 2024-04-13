@@ -5,15 +5,15 @@ import Social from './Social'
 import BackButton from './BackButton'
 
 interface CardWrapperProps {
-    children: React.ReactNode,
-    headLabel: string,
-    backButtonLabel: string,
-    backButtonHref: string,
-    showSocial?: boolean
-}
-
-
-export const CardWrapper = ({children, headLabel, backButtonLabel, backButtonHref, showSocial}: CardWrapperProps) => {
+  children: React.ReactNode,
+  headLabel: string,
+  backButtonLabel: string,
+  backButtonHref: string,
+  showSocial?: boolean,
+  }
+  
+  
+  export const CardWrapper = ({children, headLabel, backButtonLabel, backButtonHref, showSocial}: CardWrapperProps) => {
   return (
     <Card className='w-[400px] shadow-md'>
       <CardHeader>

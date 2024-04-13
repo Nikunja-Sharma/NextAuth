@@ -15,7 +15,10 @@ import { getTwoFactorTokenByEmail } from "@/data/two-factor-token";
 import { db } from "@/lib/db";
 import { getTwoFactorConfirmationByUserId } from "@/data/two-factor-confirmation";
 
-export const login = async (value: z.infer<typeof LoginSchema>) => {
+export const login = async (
+    value: z.infer<typeof LoginSchema>,
+    callbackurl?: string | null
+) => {
     const validatedFields = LoginSchema.safeParse(value);
     if (!validatedFields.success) {
         return { error: "Invald Fields!" };
@@ -78,8 +81,8 @@ export const login = async (value: z.infer<typeof LoginSchema>) => {
             }
 
             await db.twoFactorConfirmation.create({
-                data:{userId:existingUser.id}
-            })
+                data: { userId: existingUser.id },
+            });
         } else {
             const twoFactorToken = await generateTwoFactorToken(
                 existingUser.email
@@ -95,7 +98,7 @@ export const login = async (value: z.infer<typeof LoginSchema>) => {
         await signIn("credentials", {
             email,
             password,
-            redirectTo: DEFAULT_LOGIN_REDIRECT,
+            redirectTo: callbackurl || DEFAULT_LOGIN_REDIRECT,
         });
     } catch (error) {
         if (error instanceof AuthError) {

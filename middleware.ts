@@ -30,7 +30,13 @@ export default auth((req) => {
   }
 
   if (!isLoggedIn && !isPublicRoute) {
-    return Response.redirect(new URL("/auth/login", nextUrl))
+    let callbackurl = nextUrl.pathname
+    if (nextUrl.search) {
+      callbackurl+=nextUrl.search
+    }
+
+    const encodedcallbackurl = encodeURIComponent(callbackurl)
+    return Response.redirect(new URL(`/auth/login?callbackUrl=${encodedcallbackurl}`, nextUrl))
   }
 
   return null;

@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import * as z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LoginSchema } from "@/schemas";
+
 import {
     Form,
     FormControl,
@@ -23,6 +24,7 @@ import Link from "next/link";
 // todo!!
 export const LoginForm = () => {
     const searchParams = useSearchParams();
+    const callbaclUrl = searchParams.get("callbaclUrl");
     const [urlError, setUrlError] = useState<string | undefined>("");
     const [showTwoFactor, setShowTwoFactor] = useState(false);
     useEffect(() => {
@@ -50,9 +52,9 @@ export const LoginForm = () => {
         setError("");
         setSuccess("");
         startTransition(() => {
-            login(values)
+            login(values, callbaclUrl)
                 .then((data) => {
-                    console.log(data);
+                    // console.log(data);
                     if (data?.error) {
                         form.reset();
                         setError(data.error);
@@ -75,9 +77,9 @@ export const LoginForm = () => {
         <div>
             <CardWrapper
                 headLabel="Welcome Back"
-                backButtonLabel={showTwoFactor ? '' : "Dont have a account?"}
-                backButtonHref="/auth/register"
-                showSocial
+                backButtonLabel={showTwoFactor ? "" : "Dont have a account?"}
+                backButtonHref={showTwoFactor ? "" : "/auth/register"}
+                showSocial={!showTwoFactor}
             >
                 <Form {...form}>
                     <form
